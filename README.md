@@ -1,12 +1,26 @@
 # webrtc-tunnel
 
-GitHub Pages static player for ZLMediaKit WebRTC playback.
+WebRTC player page deployed by GitHub Pages.
 
-## Default signal URL
+## Local dev
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Deploy
+
+Push to `main`; GitHub Actions deploys `dist` to Pages.
+
+## Player endpoint
+
+Default URL in page:
 
 `https://mbp14.beago-fish.ts.net/index/api/webrtc?app=live&stream=cam1&type=play`
-
-## Notes
-
-- Viewer must be in the same Tailscale tailnet.
-- If page is hosted on `https://mynanocloud.com`, ensure CORS allows this origin on the ZLM side.
