@@ -2,73 +2,11 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=/webrtc-tunnel/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WebRTC Tunnel Player</title>
-  <style>
-    body { margin: 0; background: #0b1220; color: #e8eefc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .wrap { max-width: 960px; margin: 32px auto; padding: 0 16px; }
-    .card { background: #111a2e; border: 1px solid #27324f; border-radius: 14px; padding: 16px; }
-    .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-    input { flex: 1; min-width: 280px; padding: 10px 12px; border-radius: 10px; border: 1px solid #334266; background: #0a1428; color: #e8eefc; }
-    button { padding: 10px 14px; border-radius: 10px; border: 0; background: #60a5fa; color: #05152f; font-weight: 700; cursor: pointer; }
-    video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; }
-    #status { margin-top: 10px; color: #9fb0d7; font-size: 14px; }
-  </style>
+  <title>Redirecting...</title>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h2>Tailnet WebRTC Player</h2>
-      <p>需在同一 Tailscale 网络内访问。</p>
-      <div class="row">
-        <input id="url" value="https://mbp14.beago-fish.ts.net/index/api/webrtc?app=live&stream=cam1&type=play" />
-        <button id="play">播放</button>
-      </div>
-      <video id="video" autoplay playsinline controls muted></video>
-      <div id="status">状态: idle</div>
-    </div>
-  </div>
-
-  <script src="https://mbp14.beago-fish.ts.net/ZLMRTCClient.js"></script>
-  <script>
-    const video = document.getElementById('video');
-    const urlInput = document.getElementById('url');
-    const statusEl = document.getElementById('status');
-    const playBtn = document.getElementById('play');
-    let player = null;
-
-    function setStatus(text) { statusEl.textContent = '状态: ' + text; }
-    function stop() {
-      if (player && typeof player.close === 'function') player.close();
-      player = null;
-    }
-
-    function start() {
-      stop();
-      if (!window.ZLMRTCClient) {
-        setStatus('ZLMRTCClient.js 加载失败');
-        return;
-      }
-      setStatus('connecting...');
-      player = new ZLMRTCClient.Endpoint({
-        element: video,
-        zlmsdpUrl: urlInput.value.trim(),
-        debug: false,
-        audioEnable: true,
-        videoEnable: true,
-        recvOnly: true,
-      });
-
-      player.on(ZLMRTCClient.Events.WEBRTC_ON_CONNECTION_STATE_CHANGE, (state) => {
-        setStatus(state);
-      });
-
-      player.on(ZLMRTCClient.Events.WEBRTC_OFFER_ANWSER_EXCHANGE_FAILED, () => {
-        setStatus('SDP exchange failed (检查 CORS / Tailnet 连通性)');
-      });
-    }
-
-    playBtn.addEventListener('click', start);
-  </script>
+  <p>Redirecting to <a href="/webrtc-tunnel/">/webrtc-tunnel/</a> ...</p>
 </body>
 </html>
